@@ -47,7 +47,7 @@ class dice_game (ui.View):
 		from console import alert
 		d1, d2 = self.dice
 		answer = 14-(d1+d2)
-		alert(str(answer))
+		alert(str(answer), button1='Cool', hide_cancel_button=True)
 
 if __name__ == '__main__':
 	v = ui.load_view()
