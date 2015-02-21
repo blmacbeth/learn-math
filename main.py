@@ -25,7 +25,7 @@ for module in modules:
 	names.append({
 		'title': module.replace('_',' ').title(),
 		'accessory_type': 'detail_button',
-		'info': info
+		'info': info or ''
 	})
 
 views = [ui.load_view('games/'+module) for module in modules if module is not '__init__']

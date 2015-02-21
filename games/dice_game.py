@@ -1,3 +1,5 @@
+'''This game is played by determining what the sum of the opposite sides of the dice. The opposing sides of dice will always add up to 7. This game helps with keeping complex maths in you head.'''
+
 # coding: utf-8
 
 import ui
