@@ -1,5 +1,7 @@
 # coding: utf-8
 
+'''To play this game, simply solve missing part of the quation by 'counting up' to the next ten and then 'counting up' to the answer. The answer will always be a multiple of ten.'''
+
 import ui
 
 class counting_up (ui.View):
