@@ -30,25 +30,25 @@ for module in modules:
 
 views = [ui.load_view('games/'+module) for module in modules if module is not '__init__']
 
-## TODO: fix to use a dictionary on push
+main_view  = ui.load_view()
+table_data = ui.ListDataSource(names)
+nav_view   = ui.NavigationView(main_view)
+
 def play_game(sender):
-	'@type sender: ui.Button'
-	v = sender.superview
-	row,game = v['table'].selected_row
-	v.navigation_view.push_view(views[game])
+	row = sender.selected_row
+	main_view.navigation_view.push_view(views[row])
 
 @ui.in_background	
 def get_info(sender):
 	index = sender.tapped_accessory_row
 	console.alert('How to Play', names[index]['info'], button1='Cool', hide_cancel_button=True)
 
-table_data = ui.ListDataSource(names)
 table_data.accessory_action = get_info
+table_data.action           = play_game
 
-main_view = ui.load_view()
 main_view['table'].data_source = table_data
 main_view['table'].delegate    = table_data
 
-nav_view = ui.NavigationView(main_view)
+
 nav_view.bar_tint_color = (.9,.9,.9)
 nav_view.present('sheet', hide_title_bar=True)
