@@ -1,4 +1,5 @@
 # coding: utf-8
+'''Partners to ten are useful when doing any kind of math. In this game simply figure out what number, when added to the current number, will add up to 10.'''
 
 import ui
 	

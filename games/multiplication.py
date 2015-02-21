@@ -1,4 +1,5 @@
 # coding: utf-8
+'''Trains you in simple multiplication. No number should be greater than 10.'''
 
 import ui
 

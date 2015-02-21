@@ -1,4 +1,5 @@
-# coding: utf-8
+#coding: utf-8
+'''This game helps with learning basic times tables.'''
 
 import ui
 

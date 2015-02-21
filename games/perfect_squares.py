@@ -1,4 +1,5 @@
 # coding: utf-8
+'''Practice with both finding a number squared and finding the square root of perfect squares. All perfect squares will be less than or equal to 20*20.'''
 
 import ui
 
