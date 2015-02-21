@@ -1,6 +1,6 @@
 # coding: utf-8
 
-import ui, os, sys, console
+import ui, os, sys, console, inspect
 
 ## Load Game modules and thier views
 path = os.path.dirname(os.path.abspath(__file__))+'/games'
@@ -19,10 +19,13 @@ for module in modules:
 ## making the names look pretty
 names = []
 for module in modules: 
+	import games
+	cmd = 'info = inspect.getdoc(games.%s)' % module
+	exec cmd
 	names.append({
 		'title': module.replace('_',' ').title(),
 		'accessory_type': 'detail_button',
-		'info': ''
+		'info': info
 	})
 
 views = [ui.load_view('games/'+module) for module in modules if module is not '__init__']
