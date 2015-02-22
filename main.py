@@ -9,7 +9,10 @@ sys.path.append(path) ## added to make things work
 
 ignore = ['__init__.py']
 
-modules = [f.split('.')[0] for f in os.listdir(path) if f.endswith('.py') and f not in ignore]
+modules = [f.split('.')[0] 
+           for f in os.listdir(path) 
+           if  f.endswith('.py') 
+           and f not in ignore]
 
 ## I hate myself for this :(
 ## making the names look pretty
@@ -24,7 +27,9 @@ for module in modules:
 		'info': info or ''
 	})
 
-views = [ui.load_view('games/'+module) for module in modules if module is not '__init__']
+views = [ui.load_view('games/'+module) 
+         for module in modules 
+         if module is not '__init__']
 
 main_view  = ui.load_view()
 table_data = ui.ListDataSource(names)
