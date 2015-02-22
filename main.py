@@ -3,25 +3,21 @@
 import ui, os, sys, console, inspect
 
 ## Load Game modules and thier views
-path = os.path.dirname(os.path.abspath(__file__))+'/games'
+path = os.path.dirname(__file__)+'/games'
 
 sys.path.append(path) ## added to make things work
 
 ignore = ['__init__.py']
 
 modules = [f.split('.')[0] for f in os.listdir(path) if f.endswith('.py') and f not in ignore]
-	
+
 ## I hate myself for this :(
-for module in modules:
-	cmd = 'from games.%s import *' % module
-	exec(cmd)
-	
 ## making the names look pretty
 names = []
-for module in modules: 
+for module in modules:
+	exec 'from games.%s import *' % module
 	import games
-	cmd = 'info = inspect.getdoc(games.%s)' % module
-	exec cmd
+	exec 'info = inspect.getdoc(games.%s)' % module
 	names.append({
 		'title': module.replace('_',' ').title(),
 		'accessory_type': 'detail_button',
@@ -35,8 +31,8 @@ table_data = ui.ListDataSource(names)
 nav_view   = ui.NavigationView(main_view)
 
 def play_game(sender):
-	row = sender.selected_row
-	main_view.navigation_view.push_view(views[row])
+	view = views[sender.selected_row]
+	main_view.navigation_view.push_view(view)
 
 @ui.in_background	
 def get_info(sender):
@@ -48,7 +44,6 @@ table_data.action           = play_game
 
 main_view['table'].data_source = table_data
 main_view['table'].delegate    = table_data
-
 
 nav_view.bar_tint_color = (.9,.9,.9)
 nav_view.present('sheet', hide_title_bar=True)
