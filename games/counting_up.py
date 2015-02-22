@@ -16,6 +16,9 @@ class counting_up (ui.View):
 		
 		self['question'].text = self.question[0]
 		
+	def touch_ended(self, touch):
+		self.show_answer(None)
+	
 	def get_question(self):
 		import random
 		first  = random.randint(1,10)*10

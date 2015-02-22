@@ -14,6 +14,9 @@ class perfect_squares (ui.View):
 		self['next'].action   = self.next_question
 		self['question'].text = self.question[0]
 		
+	def touch_ended(self, touch):
+		self.show_answer(None)
+	
 	def get_question(self):
 		import random
 		m = self['direction'].selected_index

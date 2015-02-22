@@ -13,6 +13,9 @@ class partners_to_ten (ui.View):
 		self['next'].action   = self.next_pair
 		self['number'].text   = self.pair[0]
 		
+	def touch_ended(self, touch):
+		self.show_answer(None)
+	
 	def get_pair(self):
 		import random
 		return random.choice(self.pairs) 

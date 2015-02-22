@@ -38,6 +38,9 @@ class dice_game (ui.View):
 		self['next'].action   = self.roll_dice
 		self.roll_dice('None')
 		
+	def touch_ended(self, touch):
+		self.show_answer(None)
+	
 	def roll_dice(self, sender):
 		d1 = self['die1'].roll_die()
 		d2 = self['die2'].roll_die()
