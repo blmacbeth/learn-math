@@ -23,13 +23,13 @@ for module in modules:
 	exec 'info = inspect.getdoc(games.%s)' % module
 	names.append({
 		'title': module.replace('_',' ').title(),
-		'accessory_type': 'detail_button',
+		'accessory_type': 'detail_disclosure_button',
 		'info': info or ''
 	})
 
 views = [ui.load_view('games/'+module) 
          for module in modules 
-         if module is not '__init__']
+         if  module is not '__init__']
 
 main_view  = ui.load_view()
 table_data = ui.ListDataSource(names)
